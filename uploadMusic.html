@@ -65,7 +65,8 @@
             </h3>
           </hgroup>
           <form>
-            <button type="button" class="contrast" onclick="window.location.href='#'">添加文件</button>
+            <button type="button" class="contrast" id="fileInput">添加文件</button>
+            <input style="display: none;" type="file" name="files[]" id="fileToUpload" multiple>
             <button type="button" class="contrast" onclick="window.location.href='#'">开始上传</button>
           </form>
           <progress value="25" max="100"></progress>

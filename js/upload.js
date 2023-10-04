@@ -21,22 +21,15 @@ fileToUpload.addEventListener('change', function (event) {
     const file = files[i];
     const listItem = document.createElement('li');
     const fileName = document.createTextNode(file.name);
+
     const deleteButton = document.createElement('button');
-    deleteButton.classList.add('delete-button');
-    deleteButton.classList.add('mdui-ripple');
-    deleteButton.classList.add('mdui-color-red');
-    deleteButton.classList.add('mdui-btn');
-    deleteButton.classList.add('mdui-btn-icon');
-    const iconButton = document.createElement('i');
-    iconButton.classList.add('mdui-icon');
-    iconButton.classList.add('material-icons');
-    const deleteIcon = document.createTextNode('delete');
-    iconButton.appendChild(deleteIcon);
-    deleteButton.appendChild(iconButton);
+    const text = document.createTextNode('删除');
+    deleteButton.appendChild(text);
     deleteButton.addEventListener('click', function () {
       listItem.remove(); // 点击删除按钮时移除文件项
       selectedFiles.remove(files)
     });
+
     listItem.appendChild(fileName);
     listItem.appendChild(deleteButton);
     fileList.appendChild(listItem);
