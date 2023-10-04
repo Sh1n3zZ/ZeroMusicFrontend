@@ -1,90 +1,168 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-    <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
     <meta name="renderer" content="webkit" />
     <meta name="force-rendering" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <style>
-        html,
+    <title>ZeroMusic - Main</title>
+    <link rel="shortcut icon" href="#" />
+    <link rel="stylesheet" href="./css/pico.css" />
+    <link rel="stylesheet" href="./css/custom.css" />
+    <script src="./js/upload.js"></script>
+  </head>
 
-        .container {
-            text-align: center;
-            padding-left: 5%;
-            padding-right: 5%;
-        }
+  <body>
+    <!-- Nav -->
+    <nav class="container-fluid">
+      <ul>
+        <li>
+          <a href="./" class="contrast" onclick="event.preventDefault()"><strong>ZeroMusic</strong></a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <details role="list" dir="rtl">
+            <summary aria-haspopup="listbox" role="link" class="secondary">Theme</summary>
+            <ul role="listbox">
+              <li><a href="#" data-theme-switcher="auto">Auto</a></li>
+              <li><a href="#" data-theme-switcher="light">Light</a></li>
+              <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details role="list" dir="rtl">
+            <summary aria-haspopup="listbox" role="link" class="secondary">配置字体 (v1)</summary>
+            <ul role="listbox">
+              <li><a href="./index.html">首页</a></li>
+              <li><a href="./uploadMusic.html">传输音乐</a></li>
+              <li><a href="./uploadFont.html">配置字体</a></li>
+              <li><a href="./uploadBackground.html">配置背景</a></li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </nav>
+    <!-- ./ Nav -->
+
+    <!-- Main -->
+    <main class="container">
+      <article class="grid">
+        <div>
+          <hgroup>
+            <h1>零度音乐背景配置工具</h1>
+            <h2 id="sentence"></h2>
+            <h3>
+                支持 PNG JPG WEBP 格式
+                <br/>
+                速度取决于网络环境
+                <br/>
+            </h3>
+          </hgroup>
+          <form>
+            <button type="button" class="contrast" onclick="window.location.href='#'">选择背景图</button>
+          </form>
+          <div class="DvemiS4Ever">
+          <p id="normalFileName">未选中图片</p>
+          </div>
+          <button type="button" class="contrast" onclick="window.location.href='#'">开始上传</button>
+        </div>
+        <div></div>
+      </article>
+    </main>
+    <!-- ./ Main -->
+    <style>
+    .DvemiS4Ever {
+    text-align: center;
+    }
     </style>
 
-    <style>
-        ul {
-            list-style: none;
-            padding: 0;
+    <!-- Footer -->
+    <footer class="container-fluid">
+      <small
+        >Built with Love By <a href="https://akihitomi.com/" class="secondary">Akihitomi</a> •
+        Suki <a href="https://sky2333.top/" class="secondary"
+          >笨蛋天姐姐</a
+        ></small
+      >
+    </footer>
+    <!-- ./ Footer -->
+
+    <!-- Minimal theme switcher -->
+    <script src="./js/minimal-theme-switcher.js"></script>
+    <script>
+        // 句子列表
+        const sentences = [
+          "若汝无介意，愿作耳边墙",
+          "思君无情拒，唯吾孤自哀",
+          "希愿回心意，眷恋越星海",
+          "欲采栀子花，赠予手心中",
+          "流水长月，依恋不舍",
+          "拾栀雨落，忆梦汐潮",
+          "思向呼唤，尔已忘期",
+          "汝之憨态，流连忘返",
+          "氢氯钠钾银，氧镁钙钡锌",
+          "Add! Commit! Push!",
+          "喵，喵喵喵! 喵喵!?",
+          "别让等待成为遗憾",
+          "星垂平野阔，月是故乡明",
+          "打起精神，准备出发!",
+          "岂曰无衣？与子同袍",
+          "你所热爱的，就是你的生活",
+          "我们的目标是星辰大海",
+          "Nvidia, fuck you.",
+          "Never gonna give you up",
+          "出发咯！丢～～～",
+          "我很可爱，v我50",
+          "听着，所谓杀手",
+          "我的热情，无穷无尽",
+          "你是不是嫌我傻了吧唧的",
+          "早上好 中午好 晚上好",
+          "₍˄·͈༝·͈˄*₎◞ ̑̑Nya~",
+          "Change the boring world!",
+          "Ciallo～(∠・ω&lt; )⌒☆",
+          "心灵美，一切都美",
+          "你干嘛～哎呦～",
+          "安民之道，在察其疾苦",
+          "不以物喜，不以己悲",
+          "水不在深，有龙则灵",
+          "不日新者必日退",
+          "一定要好好活着啊喵",
+          "祝你快乐，喵喵",
+          "这白开水怎么没味儿啊",
+          "变亦变，不变亦变",
+          "技术宅拯救世界"
+        ];
+        
+        // 从句子列表中随机选择一个句子
+        function getRandomSentence() {
+          const randomIndex = Math.floor(Math.random() * sentences.length);
+          return sentences[randomIndex];
         }
-
-        li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            background-color: #f5f5f5;
-            border-radius: 5px;
-            padding: 10px;
-            overflow: hidden;
+        
+        // 获取存储在本地的句子索引，如果没有则创建一个新的索引
+        function getStoredIndex() {
+          let storedIndex = localStorage.getItem("sentenceIndex");
+          if (storedIndex === null) {
+            storedIndex = -1;
+          } else {
+            storedIndex = parseInt(storedIndex);
+          }
+          return storedIndex;
         }
+        
+        // 在页面加载时显示随机句子
+        window.onload = function() {
+          const storedIndex = getStoredIndex();
+          const randomIndex = (storedIndex + 1) % sentences.length;
+          localStorage.setItem("sentenceIndex", randomIndex);
+          const randomSentence = getRandomSentence();
+          document.getElementById("sentence").textContent = randomSentence;
+        };
+    </script>
 
-        .file-name {
-            flex-grow: 1;
-            float: left;
-            margin-right: 10px;
-        }
-
-        .delete-button {
-            /* background-color: #ff6666;
-            color: white;
-            border: none;
-            border-radius: 3px; */
-            cursor: pointer;
-            margin-left: auto;
-            float: right;
-        }
-    </style>
-    <title>文件上传</title>
-</head>
-
-<body>
-    <div class="container mdui-p-t-5">
-        <h1>零度音乐背景配置工具</h1>
-
-        <p>
-            支持 PNG JPG WEBP 格式
-            <br>
-            速度取决于网络环境
-        </p>
-
-
-        <form id="uploadForm" action="" method="POST" enctype="multipart/form-data"
-            style="margin-bottom: 20px; margin-top: 20px;">
-            <input class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" type="button" value="选择背景图"
-                id="fileInputNormal"  />
-            <input style="display: none;" type="file" name="file" id="fileUploadNormal">
-            <p id="normalFileName">
-                未选中图片
-            </p>
-            <input class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" type="button" value="开始上传"
-                onclick="uploadFile()">
-            <br>
-            <p id="tip">
-                等待上传
-            </p>
-        </form>
-
-    </div>
-
-
-    <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
-    <script src="./js/upload_background.js"></script>
-</body>
-
+  </body>
 </html>

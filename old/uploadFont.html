@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+        html,
+
+        .container {
+            text-align: center;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+    </style>
+
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        .file-name {
+            flex-grow: 1;
+            float: left;
+            margin-right: 10px;
+        }
+
+        .delete-button {
+            /* background-color: #ff6666;
+            color: white;
+            border: none;
+            border-radius: 3px; */
+            cursor: pointer;
+            margin-left: auto;
+            float: right;
+        }
+    </style>
+    <title>文件上传</title>
+</head>
+
+<body>
+    <div class="container mdui-p-t-5">
+        <h1>零度音乐字体配置工具</h1>
+
+        <p>
+            正常字体为翻译字体,
+            粗体字体为歌词字体
+            <br>
+            速度取决于网络环境
+        </p>
+
+
+        <form id="uploadForm" action="" method="POST" enctype="multipart/form-data"
+            style="margin-bottom: 20px; margin-top: 20px;">
+            <input class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" type="button" value="选择正常字体"
+                id="fileInputNormal" style="margin-right: 20px;" />
+            <input style="display: none;" type="file" name="file" id="fileUploadNormal">
+
+            <input class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" type="button" value="选择粗体字体"
+                id="fileInputBold" />
+            <input style="display: none;" type="file" name="file" id="fileUploadBold">
+            <p id="normalFileName">
+                未选中正常字体
+            </p>
+
+            <p id="boldFileName">
+                未选中粗体字体
+            </p>
+            <input class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" type="button" value="开始上传"
+            onclick="uploadFile()">
+        <br>
+        <p id="tip">
+            等待上传
+        </p>
+        </form>
+       
+    </div>
+
+
+    <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
+    <script src="./js/upload_font.js"></script>
+</body>
+
+</html>
