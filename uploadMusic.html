@@ -54,20 +54,22 @@
           <hgroup>
             <h1>零度音乐传输工具</h1>
             <h2 id="sentence"></h2>
-            <h3>
-                建议仅用于传输媒体文件, 歌词文件
-                <br/>
-                无法多选音乐是因为系统的浏览器内核版本过低，使用系统浏览器或Chrome浏览器即可正常使用
-                <br/>
-                传输后默认保存到/sdcard/ZeroMusic/目录下
-                <br/>
-            </h3>
           </hgroup>
           <form>
             <button type="button" class="contrast" id="fileInput">添加文件</button>
             <input style="display: none;" type="file" name="files[]" id="fileToUpload" multiple>
             <button type="button" class="contrast" onclick="window.location.href='#'">开始上传</button>
           </form>
+          <hgroup>
+          <h3>
+            建议仅用于传输媒体文件, 歌词文件
+            <br/>
+            无法多选音乐是因为系统的浏览器内核版本过低，使用系统浏览器或Chrome浏览器即可正常使用
+            <br/>
+            传输后默认保存到/sdcard/ZeroMusic/目录下
+            <br/>
+          </h3>
+          </hgroup>
           <progress value="25" max="100"></progress>
           <ul id="fileList"></ul>
         </div>
