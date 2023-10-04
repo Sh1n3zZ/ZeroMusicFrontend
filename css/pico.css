@@ -207,6 +207,7 @@ kbd {
 :root:not([data-theme=dark]) {
   --background-color: #FFEEEE;
   --color: #FFC7C7;
+  --licolor: #FFA1A1;
   --h1-color: #FFA1A1;
   --h2-color: #FFC7C7;
   --h3-color: hsl(205, 25%, 23%);
@@ -313,6 +314,7 @@ kbd {
   :root:not([data-theme]) {
     --background-color: #11191f;
     --color: hsl(205, 16%, 77%);
+    --licolor: hsl(205, 16%, 77%);
     --h1-color: hsl(205, 20%, 94%);
     --h2-color: #e1e6eb;
     --h3-color: hsl(205, 18%, 86%);
@@ -699,7 +701,7 @@ table,
 ul {
   margin-top: 0;
   margin-bottom: var(--typography-spacing-vertical);
-  color: var(--color);
+  color: var(--licolor);
   font-style: normal;
   font-weight: var(--font-weight);
   font-size: var(--font-size);

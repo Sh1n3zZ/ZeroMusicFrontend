@@ -20,6 +20,8 @@ fileToUpload.addEventListener('change', function (event) {
     selectedFiles.push(files[i])
     const file = files[i];
     const listItem = document.createElement('li');
+    listItem.className = "List4DvemiS4ever";
+
     const fileName = document.createTextNode(file.name);
 
     const deleteButton = document.createElement('button');
