@@ -11,7 +11,6 @@
     <link rel="shortcut icon" href="#" />
     <link rel="stylesheet" href="./css/pico.css" />
     <link rel="stylesheet" href="./css/custom.css" />
-    <script src="./js/upload.js"></script>
   </head>
 
   <body>
@@ -63,8 +62,10 @@
             </h3>
           </hgroup>
           <form>
-            <button type="button" class="contrast" onclick="window.location.href='#'">选择正常字体</button>
-            <button type="button" class="contrast" onclick="window.location.href='#'">选择粗体字体</button>
+            <button type="button" class="contrast" id="fileInputNormal" >选择正常字体</button>
+            <button type="button" class="contrast" id="fileInputBold">选择粗体字体</button>
+            <input style="display: none;" type="file" name="files[]" id="fileUploadNormal" >
+            <input style="display: none;" type="file" name="files[]" id="fileUploadBold" >
             <div class="DvemiS4Ever">
             <p id="normalFileName" class="spaced-p">未选中正常字体</p>
             <p id="boldFileName" class="spaced-p">未选中粗体字体</p>
@@ -170,6 +171,6 @@
           document.getElementById("sentence").textContent = randomSentence;
         };
     </script>
-
+    <script src="./js/upload_font.js"></script>
   </body>
 </html>
