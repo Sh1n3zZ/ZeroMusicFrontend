@@ -14,7 +14,7 @@ fileInputNormal.onclick = (event) => {
 fileUploadNormal.addEventListener('change', function (event) {
   const file = event.target.files[0];
   if (file) {
-    normalFileName.innerHTML = '正常字体选中为: ' + file.name;
+    normalFileName.innerHTML = '背景选中为: ' + file.name;
   } else {
     normalFileName.innerHTML = '未选择文件';
   }

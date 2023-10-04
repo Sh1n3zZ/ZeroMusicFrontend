@@ -63,7 +63,8 @@
             </h3>
           </hgroup>
           <form>
-            <button type="button" class="contrast" onclick="window.location.href='#'">选择背景图</button>
+            <button type="button" class="contrast" id="fileInputNormal">选择背景图</button>
+            <input style="display: none;" type="file" name="files[]" id="fileUploadNormal" >
           </form>
           <div class="DvemiS4Ever">
           <p id="normalFileName">未选中图片</p>
@@ -163,6 +164,6 @@
           document.getElementById("sentence").textContent = randomSentence;
         };
     </script>
-
+    <script src="./js/upload_background.js"></script>
   </body>
 </html>
