@@ -20,10 +20,8 @@ fileToUpload.addEventListener('change', function (event) {
     selectedFiles.push(files[i])
     const file = files[i];
     const listItem = document.createElement('li');
-    listItem.className = "List4DvemiS4ever";
-
     const fileName = document.createTextNode(file.name);
-
+    listItem.className = "List4DvemiS4ever";
     const deleteButton = document.createElement('button');
     const text = document.createTextNode('删除');
     deleteButton.appendChild(text);
@@ -40,36 +38,44 @@ fileToUpload.addEventListener('change', function (event) {
 
 function uploadFile() {
   var files = selectedFiles;
+  var currentIndex = 0;
 
   if (files.length === 0) {
     alert("请选择文件！");
   } else {
-    progress = 0
-    progress_max = files.length
+    progress = 0;
+    progress_max = files.length;
     var fileProgress = document.getElementById("fileProgress");
-    fileProgress.style = "width: 0%;"
-
-    for (var i = 0; i < files.length; i++) {
+    fileProgress.max = progress_max;
+    fileProgress.value = 0;
+    function uploadNextFile() {
+      var file = files[currentIndex];
       var formData = new FormData();
-      formData.append("file", files[i]);
+      formData.append("file", file);
       var xhr = new XMLHttpRequest();
       xhr.open("POST", "/upload/", true);
       xhr.onload = function () {
         if (xhr.status === 200) {
-          // 请求成功完成，执行相应的操作
           console.log("上传完成：" + xhr.responseText);
+          currentIndex++;
+          refreshProgress();
+          if (currentIndex < files.length) {
+            uploadNextFile(); // 继续上传下一个文件
+          }
         } else {
-          // 请求失败或未完成，执行相应的错误处理
+          refreshProgress();
           console.error("上传失败：" + xhr.status);
-          alert( files[i].fileName + "上传错误");
+          alert(file.name + " 上传错误");
         }
-        refreshProgress()
       };
 
       xhr.send(formData);
     }
+
+    uploadNextFile(); // 开始上传第一个文件
   }
 }
+
 
 
 function handleFileSelect(event) {
@@ -86,8 +92,7 @@ function handleFileSelect(event) {
 function refreshProgress() {
   var fileProgress = document.getElementById("fileProgress");
   progress++;
-  var i = (progress / progress_max) * 100;
-  fileProgress.style.width = i + "%";
+  fileProgress.value = progress;
   if (progress === progress_max) {
     alert("上传完毕");
     fileList.innerHTML = '';

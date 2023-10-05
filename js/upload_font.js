@@ -67,10 +67,16 @@ function uploadFile() {
     formData.append("normal", normal);
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "/upload/normalFont/", true);
+    xhr.upload.onprogress = function (e) {
+      if (e.lengthComputable) {
+        console.log(e.loaded,e.total)
+        console.log(e.loaded/e.total*100)
+      }
+    };
     xhr.onload = function () {
       uploadCounter++;
       if (uploadCounter === 2) {
-        tip.innerHTML = '上传完毕'; 
+        tip.innerHTML = '上传完毕';
         uploadCounter = 0; // 重置计数器
       }
     };
